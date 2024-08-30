@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "mongoose": "^8.6.0",
+    "mysql2": "^3.11.0",
+    "sql-learning": "file:"
+  },
+  "name": "sql-learning",
+  "version": "1.0.0",
+  "description": "hoc sql",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "khoa",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "3.1.4"
+  }
+}
