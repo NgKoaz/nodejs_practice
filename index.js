@@ -13,8 +13,6 @@ const projectRouter = require('./src/routes/projectApi')
 const userRouter = require('./src/routes/userApi')
 
 
-const PORT = 8888
-
 app.set("view engine", "ejs");
 app.set('views', path.join(__dirname, 'src', 'views'));
 
@@ -37,6 +35,6 @@ app.use("/v1/api", projectRouter)
 app.use("/v1/api", userRouter)
 
 
-app.listen(PORT, () => {
-    console.log(`Listening on port ${PORT}...`)
+app.listen(process.env.PORT, () => {
+    console.log(`Listening on port ${process.env.PORT}...`)
 })
