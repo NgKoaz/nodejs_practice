@@ -1,4 +1,5 @@
-const editView = require('../models/editView')
+const editView = require('../models/editView');
+const UserModel = require('../models/user');
 const conPool = require('../services/SqlConnection')
 
 const getEditPage = async (req, res) => {
@@ -8,7 +9,8 @@ const getEditPage = async (req, res) => {
         return;
     }
     try {
-        const [result, fields] = await conPool.query("SELECT * FROM `users` WHERE id = ?", [id])
+        // const [result, fields] = await conPool.query("SELECT * FROM `users` WHERE id = ?", [id])
+        const result = await UserModel.find({ _id: id })
         if (result.length <= 0) {
             res.send("id is not found!")
             return;
@@ -26,11 +28,14 @@ const postEdit = async (req, res) => {
 
     if (!(username && email && password)) {
         res.send("One of inputs is null");
+
         return;
     }
 
     try {
-        await conPool.query("UPDATE `users` SET username=?, email=?, password=? WHERE id = ?", [username, email, password, id])
+        // await conPool.query("UPDATE `users` SET username=?, email=?, password=? WHERE id = ?", [username, email, password, id])
+        await UserModel.updateOne({ _id: id }, { username, email, password })
+
         res.redirect("/")
     } catch (err) {
         res.send("Error in database");

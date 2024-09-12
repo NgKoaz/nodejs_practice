@@ -12,8 +12,9 @@ const env = process.env;
 //     password: env.DB_PASSWORD
 // })
 (async () => {
+    const url = `mongodb+srv://${env.DB_HOST_NOSQL}/?retryWrites=true&w=majority&appName=Cluster0`
     try {
-        await mongoose.connect(`mongodb://${env.DB_HOST_NOSQL}:${env.DB_PORT_NOSQL}`, {
+        await mongoose.connect(url, {
             dbName: env.DB_DATABASE_NAME_NOSQL,
             user: env.DB_USER_NOSQL,
             pass: env.DB_PASSWORD_NOSQL
